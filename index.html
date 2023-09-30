@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CRUD Operation</title>
+</head>
+<body>
+
+<h1>Enter Your Name</h1>
+<p>Here, you can add, edit, and delete the input data</p>
+
+<input type="name" class="fname" placeholder="enter anything"/>
+<button class="fsub">Submit</button>
+<div class="optext">
+  <button class="editdata" onclick="editp()">Edit</button>
+<p class="ermsg"></p>
+</div>
+<script>
+let fName 
+let opTxt = document.querySelector('.optext')
+let btnSubmit = document.querySelector('.fsub')
+let opResult = document.querySelector('.optext')
+let btnEdit =  document.querySelector('.editdata')
+btnEdit.style.display = 'none'
+
+let btnDelete =  document.querySelector('.removeel')
+//btnDelete.style.display = 'none'
+
+//Add the data
+
+btnSubmit.addEventListener('click', function(e){
+  e.preventDefault()
+  fName = document.querySelector('.fname').value
+if(fName != ''){
+let newPara =  document.createElement('p')
+opResult.appendChild(newPara)
+newPara.innerHTML = `<div><p>${fName}</p>` + `<button class="editdata" onclick="editp(this)">Edit</button>
+</div><button class="removeel" onclick="removedata(this)">Delete</button>`
+document.querySelector('.fname').value = ''
+}
+else {
+  let erMsg = document.querySelector('.ermsg')
+  erMsg.textContent = 'Please add something'
+}
+})
+
+//Edit the data
+
+function editp(btnEdit) {
+  let editText
+  if (btnEdit.textContent === 'Edit'){
+  btnEdit.textContent = 'Done'
+  editText = btnEdit.previousElementSibling
+  editText.contentEditable = true;
+ console.log(btnEdit)
+}
+else if (btnEdit.textContent === 'Done') {
+  btnEdit.textContent = 'Edit'
+  editText = btnEdit.previousElementSibling
+  editText.textContent
+editText.contentEditable = false
+}
+}
+
+//Remove data
+function removedata(btnDelete) {
+  let removeTxt
+  if(removeTxt = btnDelete.previousElementSibling) {
+  console.log(removeTxt)
+  removeTxt.remove()
+  btnDelete.style.display = 'none'
+  }
+}
+
+</script>
+</body>
+</html>
+
+
